@@ -55,6 +55,10 @@ Configuration file is valid
 
 수정후, 8000 포트로 HAProxy 통해서 HttpServer 에 접속 성공
 
+볼륨 마운트 후, 설정 파일 수정하면, 아래 명령으로 설정 파일만 적용 가능하다고 함
+```shell
+$ docker kill -s HUP my-running-haproxy
+```
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
