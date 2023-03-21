@@ -87,6 +87,7 @@ https://github.com/mminks/haproxy-docker-logging
 
 위 저장소 코드를 참고해서 STDOUT 으로 로그를 남기는 이미지를 만들어서 띄움
 
+![log_playhaproxy-haproxy-1.png](./resources/log_playhaproxy-haproxy-1.png)
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
