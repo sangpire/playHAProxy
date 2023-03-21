@@ -30,6 +30,15 @@ $ docker run -d --name my-running-haproxy -p 8080:80 --sysctl net.ipv4.ip_unpriv
 
 인터넷 검색해서 최소한의 HAProxy 설정을 가져옴.
 
+Python 으로 server 폴더에 8000 포트로 서버를 하나 띄워봄
+```shell
+$ cd server
+$ python3 -m http.server 8000
+```
+
+그리고 HAProxy 서버가 위 서버를 바라보도록 설정
+
+
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
