@@ -20,7 +20,8 @@ $ docker run -it --rm --name haproxy-syntax-check my-haproxy haproxy -c -f /usr/
 
 RUN
 ```shell
-$ docker run -d --name my-running-haproxy -p 8080:80 --sysctl net.ipv4.ip_unprivileged_port_start=0 my-haproxy
+$ docker rm -f my-running-haproxy
+$ docker run -d --name my-running-haproxy -p 8080:80 -p 8090:8090 --sysctl net.ipv4.ip_unprivileged_port_start=0 my-haproxy
 ```
 
 아래 에러 발생
@@ -59,6 +60,10 @@ Configuration file is valid
 ```shell
 $ docker kill -s HUP my-running-haproxy
 ```
+
+### HAProxy 상태를 확이할 수 있도록 stats 를 열어보자
+
+![HAProxy 상태 페이지](./resources/HAProxyStats.png)
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
