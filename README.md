@@ -1,34 +1,36 @@
 # Play HAProxy
 
- HAProxy 가 어떻게 동작하는지 살펴보자
+GOAL. HAProxy 설정에 따라 어떻게 동작하는지 살펴보자
 
 # STEP
 
 ## HAProxy 를 띄워보자
 
-공식 이미지 페이지 설명을 보면서 Docker 파일을 만들어보자
+### 공식 이미지 페이지 설명을 보면서 따라하기
 
-이미지 만들기
+이미지 만들기(OUTDATED)
 ```shell
 $ docker build -t my-haproxy .
 ```
 
-설정 파일 검증
+설정 파일 검증(OUTDATED)
 ```shell
 $ docker run -it --rm --name haproxy-syntax-check my-haproxy haproxy -c -f /usr/local/etc/haproxy/haproxy.cfg
 ```
 
-RUN
+RUN(OUTDATED)
 ```shell
-$ docker rm -f my-running-haproxy
+$ docker stop my-running-haproxy || true && docker rm -f my-running-haproxy || true
 $ docker run -d --name my-running-haproxy -p 8080:80 -p 8090:8090 --sysctl net.ipv4.ip_unprivileged_port_start=0 my-haproxy
 ```
+- 이미 실행중인 경우, 실행중인 컨테이너를 삭제하는 코드 추가 [참고](https://stackoverflow.com/a/38225298)
 
 아래 에러 발생
 ```
 2023-03-21 20:03:36 [ALERT] 079/110336 (1) : [haproxy.main()] No enabled listener found (check for 'bind' directives) ! Exiting.
 ```
 
+### 최소 설정과 웹 서버 구축
 인터넷 검색해서 최소한의 HAProxy 설정을 가져옴.
 
 Python 으로 server 폴더에 8000 포트로 서버를 하나 띄워봄
@@ -66,7 +68,11 @@ $ docker kill -s HUP my-running-haproxy
 ![HAProxy 상태 페이지](./resources/HAProxyStats.png)
 바로가기: http://localhost:8090/haproxy_stats
 
+### Docker-compose 로 재구성
 수정 및 재시작이 번거로워서 Docker-compose 로 재구성함
+
+- 웹서버를 Apache Httpd 이미지로 변경
+
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
