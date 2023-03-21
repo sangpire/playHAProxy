@@ -64,6 +64,9 @@ $ docker kill -s HUP my-running-haproxy
 ### HAProxy 상태를 확이할 수 있도록 stats 를 열어보자
 
 ![HAProxy 상태 페이지](./resources/HAProxyStats.png)
+바로가기: http://localhost:8090/haproxy_stats
+
+수정 및 재시작이 번거로워서 Docker-compose 로 재구성함
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
