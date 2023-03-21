@@ -1,7 +1,8 @@
 version: "3.9"
 services:
   haproxy:
-    image: "haproxy:1.8.12"
+    build: ./haproxy
+    image: "haproxy-docker-logging:1.8.31"
     ports:
       - "8080:80"
       - "8090:8090"

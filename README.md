@@ -73,6 +73,20 @@ $ docker kill -s HUP my-running-haproxy
 
 - 웹서버를 Apache Httpd 이미지로 변경
 
+### Logging 설정을 해보자
+HAProxy는 rsyslog 가 필요한 듯.
+```
+log <address> [len <length>] [format <format>] <facility> [max level [min level]]
+```
+
+로깅 설정 설명이 아래와 같이 나옴
+> Adds a global syslog server.
+
+기본 1.8 버전의 HAProxy 이미지의 경우, rsyslog 설정을 어떻게 하는지 몰라 검색 중, 아래 저장소를 발견
+https://github.com/mminks/haproxy-docker-logging
+
+위 저장소 코드를 참고해서 STDOUT 으로 로그를 남기는 이미지를 만들어서 띄움
+
 
 ## Link
 - [Docker Image](https://hub.docker.com/_/haproxy)
