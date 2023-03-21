@@ -38,6 +38,22 @@ $ python3 -m http.server 8000
 
 그리고 HAProxy 서버가 위 서버를 바라보도록 설정
 
+설정 파일 검증에서 에러 발생
+```
+[ALERT] 079/112528 (1) : parsing [/usr/local/etc/haproxy/haproxy.cfg:13] : 'frontend' cannot handle unexpected argument '*:80'.
+[ALERT] 079/112528 (1) : parsing [/usr/local/etc/haproxy/haproxy.cfg:13] : please use the 'bind' keyword for listening addresses.
+[ALERT] 079/112528 (1) : Error(s) found in configuration file : /usr/local/etc/haproxy/haproxy.cfg
+[ALERT] 079/112528 (1) : Fatal errors found in configuration.
+```
+
+[인터넷 검색 해보니 문법이 변경되었다고 함.](https://superuser.com/a/1092793)
+
+수정 후 검증 패스
+```
+Configuration file is valid
+```
+
+수정후, 8000 포트로 HAProxy 통해서 HttpServer 에 접속 성공
 
 
 ## Link
